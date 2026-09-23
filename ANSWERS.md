@@ -1,6 +1,6 @@
 # Respostas
 
-Nome:
+Nome:Victo Augusto de Souza da Silva
 
 Como responder: nas questões objetivas, escreva a letra depois de **Resposta:**. A justificativa é opcional, mas ajuda na correção. Nas discursivas, escreva seu texto logo abaixo do enunciado.
 
@@ -37,9 +37,9 @@ C) A asserção I é uma proposição verdadeira, e a II é uma proposição fal
 D) A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.
 E) As asserções I e II são proposições falsas.
 
-**Resposta:**
+**Resposta:*A*
 
-**Justificativa (opcional):**
+**Justificativa (opcional):*entendi que o Controller não deve criar o Service sozinho. Ele recebe o Service pelo construtor, e isso facilita trocar a implementação quando for necessário, como em um teste usando um Service falso.*
 
 ---
 
@@ -66,9 +66,9 @@ C) `const company = db.prepare('SELECT * FROM companies WHERE id = ' + companyId
 D) `res.send(\`<h1>${name} created</h1>\`)`
 E) `const net = gross - gross * 0.11`
 
-**Resposta:**
+**Resposta:*E*
 
-**Justificativa (opcional):**
+**Justificativa (opcional):*Eu colocaria o cálculo do salário líquido no Service porque ele faz parte da regra de negócio. O Controller só deveria receber os dados e passar para o Service. *
 
 ---
 
@@ -94,9 +94,9 @@ C) II e IV, apenas.
 D) I, II e IV, apenas.
 E) I, II, III e IV.
 
-**Resposta:**
+**Resposta:*D*
 
-**Justificativa (opcional):**
+**Justificativa (opcional):*A validação do formato do e-mail pertence à apresentação/DTO, enquanto o salário mínimo é uma regra de negócio do Service. A afirmação III está incorreta porque o Repository deve cuidar da persistência.*
 
 ---
 
@@ -128,9 +128,9 @@ C) II, apenas.
 D) II e III, apenas.
 E) I, II e III.
 
-**Resposta:**
+**Resposta:*B*
 
-**Justificativa (opcional):**
+**Justificativa (opcional):*A exportação em CSV pode reutilizar o Service e os repositórios, e a regra do INSS por estado deve ser tratada no Service. O Service não deve ser alterado para responder em JSON.*
 
 ---
 
@@ -152,9 +152,9 @@ C) A asserção I é uma proposição verdadeira, e a II é uma proposição fal
 D) A asserção I é uma proposição falsa, e a II é uma proposição verdadeira.
 E) As asserções I e II são proposições falsas.
 
-**Resposta:**
+**Resposta:*C*
 
-**Justificativa (opcional):**
+**Justificativa (opcional):*A afirmação I é verdadeira porque a rota monolítica concentra várias responsabilidades. A afirmação II é falsa porque o TypeScript não impede erros de arquitetura ou efeitos em outras partes do sistema.*
 
 ---
 
@@ -170,7 +170,7 @@ c) cite os arquivos do seu projeto que seriam alterados para atendê-lo.
 
 (Até 10 linhas.)
 
-**Resposta:**
+**Resposta:*Para mim, o pedido que exigiria mais esforço seria o (c), disponibilizar os mesmos dados para um aplicativo mobile. Mesmo com as camadas separadas, ainda seria necessário criar uma forma de disponibilizar esses dados para o aplicativo. A vantagem é que eu poderia reaproveitar as regras do employee.service.ts e os repositories, sem precisar refazer toda a lógica. Eu provavelmente alteraria os controllers e as rotas relacionadas aos funcionários e manteria o Service e os repositories sendo reutilizados.*
 
 ---
 
@@ -186,4 +186,4 @@ c) descreva como você corrigiu, ou como corrigiria.
 
 (Até 10 linhas.)
 
-**Resposta:**
+**Resposta:*O erro que eu mais poderia cometer seria colocar regras de negócio dentro do Controller. Durante a atividade, percebi que seria fácil colocar cálculos ou validações diretamente nele por estar recebendo os dados da requisição. Eu corrigiria isso deixando o Controller apenas responsável por receber os dados e chamar o Service. As regras ficariam no employee.service.ts, deixando cada camada com sua responsabilidade.*
