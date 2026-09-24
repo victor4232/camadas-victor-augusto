@@ -18,7 +18,7 @@ export function companyRoutes(controller: CompanyController): Router {
 
   var methodName = 'del' + 'ete'
 
-  var deleteRoute = (router as any)[methodName] as (
+  var deleteRoute = (router as any)[methodName].bind(router) as (
     path: string,
     handler: (req: Request, res: Response, next: NextFunction) => void
   ) => Router
