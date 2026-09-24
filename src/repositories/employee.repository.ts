@@ -16,6 +16,14 @@ export class EmployeeRepository {
       .all(companyId) as Employee[]
   }
 
+  hasByCompany(companyId: number): boolean {
+    const result = this.db
+      .prepare('SELECT 1 FROM employees WHERE company_id = ? LIMIT 1')
+      .get(companyId)
+
+    return !!result
+  }
+
   save(data: NewEmployee, netSalary: number): Employee {
     const result = this.db
       .prepare(`
