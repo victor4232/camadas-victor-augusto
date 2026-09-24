@@ -130,7 +130,7 @@ E) I, II e III.
 
 **Resposta:*B*
 
-**Justificativa (opcional):*A exportação em CSV pode reutilizar o Service e os repositórios, e a regra do INSS por estado deve ser tratada no Service. O Service não deve ser alterado para responder em JSON.*
+**Justificativa (opcional):*A exportação em CSV pode reutilizar os Services e Repositories existentes, ficando a nova responsabilidade na camada de apresentação. A regra de INSS por estado deve ficar no employee.service.ts, pois é uma regra de negócio. Para o app mobile, o Service não precisa ser alterado para responder em JSON, pois essa responsabilidade pertence ao Controller e à rota.*
 
 ---
 
@@ -154,7 +154,7 @@ E) As asserções I e II são proposições falsas.
 
 **Resposta:*C*
 
-**Justificativa (opcional):*A afirmação I é verdadeira porque a rota monolítica concentra várias responsabilidades. A afirmação II é falsa porque o TypeScript não impede erros de arquitetura ou efeitos em outras partes do sistema.*
+**Justificativa (opcional):*A afirmação I é verdadeira porque a versão monolítica concentra na mesma rota a leitura da requisição, as regras de negócio, o acesso ao banco e a resposta. A afirmação II é falsa porque o TypeScript verifica tipos, mas não impede problemas de arquitetura ou alterações em uma parte do sistema que afetem outra.*
 
 ---
 
@@ -170,7 +170,7 @@ c) cite os arquivos do seu projeto que seriam alterados para atendê-lo.
 
 (Até 10 linhas.)
 
-**Resposta:*Para mim, o pedido que exigiria mais esforço seria o (c), disponibilizar os mesmos dados para um aplicativo mobile. Mesmo com as camadas separadas, ainda seria necessário criar uma forma de disponibilizar esses dados para o aplicativo. A vantagem é que eu poderia reaproveitar as regras do employee.service.ts e os repositories, sem precisar refazer toda a lógica. Eu provavelmente alteraria os controllers e as rotas relacionadas aos funcionários e manteria o Service e os repositories sendo reutilizados.*
+**Resposta:*Para mim, o pedido que exigiria mais esforço seria o (c), disponibilizar os mesmos dados para um aplicativo mobile. Mesmo com as camadas separadas, seria necessário criar uma forma de disponibilizar esses dados pela API. Eu poderia reaproveitar as regras do employee.service.ts e o acesso aos dados dos employee.repository.ts e company.repository.ts. As principais alterações ficariam em employee.controller.ts e employee.routes.ts, criando os endpoints necessários para o aplicativo. Assim, a lógica de negócio continuaria separada da forma como os dados são apresentados.*
 
 ---
 
@@ -186,4 +186,4 @@ c) descreva como você corrigiu, ou como corrigiria.
 
 (Até 10 linhas.)
 
-**Resposta:*O erro que eu mais poderia cometer seria colocar regras de negócio dentro do Controller. Durante a atividade, percebi que seria fácil colocar cálculos ou validações diretamente nele por estar recebendo os dados da requisição. Eu corrigiria isso deixando o Controller apenas responsável por receber os dados e chamar o Service. As regras ficariam no employee.service.ts, deixando cada camada com sua responsabilidade.*
+**Resposta:*O erro que eu cheguei mais perto de cometer foi colocar regras de negócio no Controller. O ponto em que isso poderia acontecer está no método create de src/controllers/employee.controller.ts, que recebe os dados da requisição. Em vez de fazer cálculos ou regras diretamente nesse método, mantive essa responsabilidade no employee.service.ts. O Controller chama o DTO para validar a entrada e depois chama o Service. Dessa forma, o cálculo do salário líquido e a validação do salário mínimo permanecem na camada de negócio.*
